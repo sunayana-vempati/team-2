@@ -44,9 +44,9 @@ div {
 </style>
 <body>
 
-<h2 style="margin-left:250px;color:green;">Sign Up</h2>
+<h2 style="margin-left:250px;color:green;">Welcome</h2>
 
-<div style="width:50%;margin-left:250px" >
+<!--<div style="width:50%;margin-left:250px" >
     <form action="" method="post">
 	<label>Type:</label>
 		<span style="color:red">*</span>
@@ -75,8 +75,10 @@ div {
 
         <input type="submit" value="Submit" name="Submit">
     </form>
-	</div>
+	</div>-->
 <?php
+
+
 
 
 $servername = "localhost";
@@ -96,7 +98,7 @@ $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name1 = $password1=$email1 = $phno1=$gender1 =  "";
 
 
-if (isset($_POST["Submit"])) {
+if (isset($_POST["submit"])) {
 	
 if($_POST["user"]=="student")
 	{
@@ -154,13 +156,16 @@ $sql = "INSERT INTO scribe (name, email,password,gender,phoneno)
 VALUES ('$name1', '$email1','$password1', '$gender1','$phno1')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
+	?><script>
+	window.location="stulogin.php";
+	</script><?php
 } else {
     echo "Error: " ;
 }
 }
 
 	}else{
-		echo "else";
+		
 	}
 }
 
