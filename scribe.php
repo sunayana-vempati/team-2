@@ -45,15 +45,13 @@ div {
 
 <h2 style="margin-left:250px;color:green;">Sign Up</h2>
 
-<div style="width:50%;margin-left:250px">
-    <form action="/action_page.php">
+<div style="width:50%;margin-left:250px" >
+    <form action="" method="post">
 	<label>Type:</label>
 		<span style="color:red">*</span>
-        <select id="type" name="type">
-            <option value="admin">Admin</option>
-            <option value="student">Student</option>
-            <option value="scribe">Scribe</option>
-        </select>
+        <input type="radio" name="user" value="scribe" checked> scribe<br>
+        <input type="radio" name="user" value="student"> student<br>
+      
         <label >Name:</label>
         <span style="color:red">*</span>
         <input type="text" id="uname" name="uname" placeholder="Enter name" required><br>
@@ -74,24 +72,42 @@ div {
         <input type="radio" name="gender" value="female"> Female<br>
         <input type="radio" name="gender" value="other"> Other
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" name="Submit">
     </form>
 	</div>
 <?php
 
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,"cfg2");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+$name1 = $password1=$email1 = $phno1=$gender1 =  "";
 
 
-if (isset($_POST["submit"])) {
-if ($_POST["type"]=="Scribe") {
+if (isset($_POST["Submit"])) {
+	
+if($_POST["user"]=="scribe")
+	{
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
-    $name = test_input($_POST["uname"]);
+    $name1 = test_input($_POST["uname"]);
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+	echo $name1;
+    if (!preg_match("/^[a-zA-Z ]*$/",$name1)) {
       $nameErr = "Only letters and white space allowed"; 
     }
   }
@@ -99,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["pwd"])) {
     $nameErr = "Password is required";
   } else {
-    $name = test_input($_POST["pwd"]);
+    $password1 = test_input($_POST["pwd"]);
     // check if name only contains letters and whitespace
     
   }
@@ -108,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["phno"])) {
     $nameErr = "Name is required";
   } else {
-    $name = test_input($_POST["phno"]);
+    $phno1 = test_input($_POST["phno"]);
     // check if name only contains letters and whitespace
     
   }
@@ -116,9 +132,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
-    $email = test_input($_POST["email"]);
+    $email1= test_input($_POST["email"]);
     // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format"; 
     }
   }
@@ -129,17 +145,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["gender"])) {
     $genderErr = "Gender is required";
   } else {
-    $gender = test_input($_POST["gender"]);
+    $gender1 = test_input($_POST["gender"]);
   }
+  
+  echo $name1;
+  
+$sql = "INSERT INTO scribe (name, email,password,gender,phoneno)
+VALUES ('$name1', '$email1','$password1', '$gender1','$phno1')";
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " ;
 }
 }
+
+	}
+}
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-}
+
+
+
+
+
+
 ?>
 
 
