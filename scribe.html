@@ -1,3 +1,69 @@
+<?php
+require "db.php";
+
+if(isset($_POST['uname'])&&isset($_POST['pwd'])&&isset($_POST['email'])&&isset($_POST['phno'])&&isset($_POST['gender']))
+	{
+		$name=$_POST['uname'];
+		$password=$_POST['pwd'];
+		$email=$_POST['email'];
+		$phone=$_POST['phno'];
+		$gender=$_POST['gender'];
+		
+		if(!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phone'])&&!empty($_POST['gender']))
+		{
+				$query="select email from stureg where email='$email'";
+						$query_run=mysqli_query($sql2,$query);
+						if(mysqli_num_rows($query_run)==1)
+						{
+							?>
+								<script>
+								alert('<?php echo 'user already exists';?>');
+								</script>
+								<?php
+								
+						}
+						else
+						{
+							$query1="insert into stureg values('".mysqli_real_escape_string($sql2,$username)."','".mysqli_real_escape_string($sql2,$password)."','".mysqli_real_escape_string($sql2,$email)."','".mysqli_real_escape_string($sql2,$phone)."','".mysqli_real_escape_string($sql2,$gender)."')";
+							mysqli_query($sql2,$query1);
+							if(!$query1)
+							{
+								?>
+								<script>
+								alert('<?php echo 'Could not register. Try again later';?>');
+								</script>
+								<?php
+							}
+							else
+							{
+								?>
+								<script>
+								alert('<?php echo "success";?>');
+								//window.location="login.php";
+								</script>
+								<?php							
+								//header("Location:login.php");
+							}
+							
+						}
+			}
+		}
+		else{
+			echo "enter all fields";
+		}
+			
+	}
+?>
+
+
+
+
+?>
+
+
+
+
+
 <html><!DOCTYPE html>
 <html>
 <style>

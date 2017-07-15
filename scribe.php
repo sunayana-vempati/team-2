@@ -1,3 +1,73 @@
+<<<<<<< HEAD
+=======
+<?php
+require "db.php";
+
+if(isset($_POST['type'])&&isset($_POST['uname'])&&isset($_POST['email'])&&isset($_POST['phno'])&&isset($_POST['gender'])&&isset($_POST['pwd']))
+	{
+		
+		if(!empty($_POST['type'])&&!empty($_POST['uname'])&&!empty($_POST['pwd'])&&!empty($_POST['email'])&&!empty($_POST['phno'])&&!empty($_POST['gender']))
+		{
+			
+		$inter=$_POST['type'];
+		$name=$_POST['uname'];
+		$password=$_POST['pwd'];
+		$email=$_POST['email'];
+		$phone=$_POST['phno'];
+		$gender=$_POST['gender'];
+				$query="select email from stureg where email='$email'";
+						$query_run=mysqli_query($sql2,$query);
+						if(mysqli_num_rows($query_run)==1)
+						{
+							?>
+								<script>
+								alert('<?php echo 'user already exists';?>');
+								</script>
+								<?php
+								
+						}
+						else
+						{
+							$query1="insert into stureg values('','".mysqli_real_escape_string($sql2,$username)."','".mysqli_real_escape_string($sql2,$email)."','".mysqli_real_escape_string($sql2,$password)."','".mysqli_real_escape_string($sql2,$phone)."','".mysqli_real_escape_string($sql2,$gender)."')";
+							mysqli_query($sql2,$query1);
+							
+							if(!$query1)
+							{
+								?>
+								<script>
+								alert('<?php echo 'Could not register. Try again later';?>');
+								</script>
+								<?php
+							}
+							else
+							{
+								?>
+								<script>
+								alert('<?php echo "success";?>');
+								//window.location="login.php";
+								</script>
+								<?php							
+								//header("Location:login.php");
+							}
+							
+						}
+			}
+		else{
+			echo "enter all fields";
+		}
+	}
+		?>
+
+
+
+
+
+
+
+
+
+
+>>>>>>> b3661dc1a9aa9c430b1814583efcff44b8ad82e3
 <html><!DOCTYPE html>
 <html>
 <style>
@@ -45,6 +115,7 @@ div {
 
 <h2 style="margin-left:250px;color:green;">Sign Up</h2>
 
+<<<<<<< HEAD
 <div style="width:50%;margin-left:250px" >
     <form action="" method="post">
 	<label>Type:</label>
@@ -52,6 +123,17 @@ div {
         <input type="radio" name="user" value="scribe" checked> scribe<br>
         <input type="radio" name="user" value="student"> student<br>
       
+=======
+<div style="width:50%;margin-left:250px">
+    <form action="scribe.php">
+	<label>Type:</label>
+		<span style="color:red">*</span>
+        <select id="type1" name="type">
+            <option value="admin">Admin</option>
+            <option value="student">Student</option>
+            <option value="scribe">Scribe</option>
+        </select>
+>>>>>>> b3661dc1a9aa9c430b1814583efcff44b8ad82e3
         <label >Name:</label>
         <span style="color:red">*</span>
         <input type="text" id="uname" name="uname" placeholder="Enter name" required><br>
@@ -72,6 +154,7 @@ div {
         <input type="radio" name="gender" value="female"> Female<br>
         <input type="radio" name="gender" value="other"> Other
 
+<<<<<<< HEAD
         <input type="submit" value="Submit" name="Submit">
     </form>
 	</div>
@@ -177,6 +260,11 @@ function test_input($data) {
 ?>
 
 
+=======
+        <input type="submit" value="Submit">
+    </form>
+</div>
+>>>>>>> b3661dc1a9aa9c430b1814583efcff44b8ad82e3
 
 </body>
 </html>
