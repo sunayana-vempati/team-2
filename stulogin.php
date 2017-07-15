@@ -74,7 +74,7 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password,"cfg2");
+$conn = mysqli_connect($servername, $username, $password,"cfg1");
 
 // Check connection
 if (!$conn) {
@@ -106,13 +106,24 @@ if (isset($_POST["Submit"])) {
     // check if name only contains letters and whitespace
     
   }
-$sql = "INSERT INTO stulogin ( email,password)
-VALUES ( '$email1','$password1')";
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " ;
-}
+$query="select email,password from stulogin where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";
+		$query_run=mysqli_query($conn,$query);
+          if(mysqli_num_rows($query_run)>=1)
+			{	
+			?>
+								<script>
+								alert('<?php echo "welcome";?>');
+								window.location="welcome.php";
+								</script>
+								<?php
+							}
+							else
+							{
+								//$_SESSION['varname']=$user;
+								
+								echo "error";
+								
+							}
 	}
 	}
 
