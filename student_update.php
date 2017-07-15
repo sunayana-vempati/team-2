@@ -64,6 +64,8 @@ Qualification: 	<input list="qual" name="qual">
   <option value="Graduation">
 </datalist> </br></br>
 
+Email id: <input type="text" name="emailid">
+
 Exam Center: <input type="text" name="exam" >
 <input type="submit" align="center" name="Update" value="Update" onclick="test.java"></br>
 
@@ -85,7 +87,7 @@ if (!$conn) {
 }
 echo "Connected successfully";
 
-$lang =$quali=$exams="";
+$lang =$quali=$exams=$email="";
 if (isset($_POST["Update"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
@@ -93,11 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lang = $_POST["check"];
 	$quali =$_POST["qual"];
 	$exams = $_POST["exam"];
+	$email=$_POST["emailid"];
     // check if name only contains letters and whitespace
     
   }
 }
-	$sql = "INSERT INTO student_update (lang, qual,exam) VALUES ('$lang', '$quali','$exams')";
+	$sql = "INSERT INTO student_update (lang, qual,exam,email) VALUES ('$lang', '$quali','$exams','$email')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
 } else {
