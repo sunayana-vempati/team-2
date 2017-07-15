@@ -4,7 +4,8 @@
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 0
+	;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -49,7 +50,7 @@ div {
     <form action="" method="post">
 	<label>Type:</label>
 		<span style="color:red">*</span>
-        <input type="radio" name="user" value="scribe" checked> scribe<br>
+        <input type="radio" name="user" value="scribe"> scribe<br>
         <input type="radio" name="user" value="student"> student<br>
       
         <label >Name:</label>
@@ -97,7 +98,7 @@ $name1 = $password1=$email1 = $phno1=$gender1 =  "";
 
 if (isset($_POST["Submit"])) {
 	
-if($_POST["user"]=="scribe")
+if($_POST["user"]=="student")
 	{
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -106,7 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $name1 = test_input($_POST["uname"]);
     // check if name only contains letters and whitespace
-	echo $name1;
     if (!preg_match("/^[a-zA-Z ]*$/",$name1)) {
       $nameErr = "Only letters and white space allowed"; 
     }
@@ -159,6 +159,8 @@ if (mysqli_query($conn, $sql)) {
 }
 }
 
+	}else{
+		echo "else";
 	}
 }
 

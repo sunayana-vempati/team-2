@@ -137,8 +137,9 @@ body  {
 </head>
 <body >
 <h2 align="center">Update your profile</h2>
-<form align="center" method="">
+<form align="center" method="post">
 </br>
+<<<<<<< HEAD:scribe_update.html
  <label >Email:</label>
 		<span style="color:red">*</span>
         <input type="text" id="email" name="email" placeholder="Enter mail id"><br>
@@ -150,6 +151,11 @@ body  {
 
 Language: <input type="checkbox" name="English" value="english"> English
 					<input type="checkbox" name="Telugu" value="telugu"> Telugu</br></br>
+=======
+Languages preferred: <input type="checkbox" name="check" value="english"> English
+					<input type="checkbox" name="check" value="telugu"> Telugu</br></br>
+					
+>>>>>>> 6a44a63854cb18ed0e56f5b4eca0d3ae8d2d7b93:student_update.php
 Qualification: 	<input list="qual" name="qual">
 <datalist id="qual">
   <option value="SSC">
@@ -157,10 +163,53 @@ Qualification: 	<input list="qual" name="qual">
   <option value="Intermediate 2nd year">
   <option value="Graduation">
 </datalist> </br></br>
+
+Email id: <input type="text" name="emailid">
+
+Exam Center: <input type="text" name="exam" >
 <input type="submit" align="center" name="Update" value="Update" onclick="test.java"></br>
 
 </form>
 
+<<<<<<< HEAD:scribe_update.html
+=======
+<?php
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,"cfg2");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+$lang =$quali=$exams=$email="";
+if (isset($_POST["Update"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+  
+    $lang = $_POST["check"];
+	$quali =$_POST["qual"];
+	$exams = $_POST["exam"];
+	$email=$_POST["emailid"];
+    // check if name only contains letters and whitespace
+    
+  }
+}
+	$sql = "INSERT INTO student_update (lang, qual,exam,email) VALUES ('$lang', '$quali','$exams','$email')";
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " ;
+}
+?>
+>>>>>>> 6a44a63854cb18ed0e56f5b4eca0d3ae8d2d7b93:student_update.php
 </body>
 </html>
 

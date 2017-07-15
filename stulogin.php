@@ -49,8 +49,7 @@ div {
 
 <div style="width:50%;margin-left:250px" >
     <form action="" method="post">
-	<span style="color:red">*</span>
-        <input type="radio" name="user" value="scribe" checked> scribe<br>
+	
         
       
 	<label >Email:</label>
@@ -107,9 +106,9 @@ if (isset($_POST["Submit"])) {
     // check if name only contains letters and whitespace
     
   }
-$query=mysqli_query($sql2,"select email,password from scribe where email='".mysqli_real_escape_string($sql2,$email1)."' and password='".mysqli_real_escape_string($sql2,$password1)."'");
-		
-          if(mysqli_num_rows($query)==1)
+$query="select email,password from stulogin where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";
+		$query_run=mysqli_query($conn,$query);
+          if(mysqli_num_rows($query_run)>=1)
 			{	
 			?>
 								<script>

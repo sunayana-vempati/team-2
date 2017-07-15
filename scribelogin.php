@@ -107,17 +107,12 @@ if (isset($_POST["Submit"])) {
     // check if name only contains letters and whitespace
     
   }
-$query=mysqli_query($sql2,"select email,password from scribe where email='".mysqli_real_escape_string($sql2,$email1)."' and password='".mysqli_real_escape_string($sql2,$password1)."'");
+$query=mysqli_query($conn,"select email,password from scribe where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'");
 		
-          if(mysqli_num_rows($query)==1)
+          if(mysqli_num_rows($query)>=1)
 			{	
-			?>
-								<script>
-								alert('<?php echo "welcome";?>');
-								window.location="welcome.php";
-								</script>
-								<?php
-							}
+			echo "welcome";
+			}
 							else
 							{
 								//$_SESSION['varname']=$user;
