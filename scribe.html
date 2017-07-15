@@ -1,0 +1,84 @@
+<html><!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+<body>
+
+<h2 style="margin-left:250px;color:green;">Sign Up</h2>
+
+<div style="width:50%;margin-left:250px">
+    <form action="/action_page.php">
+	<label>Type:</label>
+		<span style="color:red">*</span>
+        <select id="type" name="type">
+            <option value="admin">Admin</option>
+            <option value="student">Student</option>
+            <option value="scribe">Scribe</option>
+        </select>
+        <label >Name:</label>
+        <span style="color:red">*</span>
+        <input type="text" id="uname" name="uname" placeholder="Enter name" required><br>
+
+        <label >Password:</label>
+		<span style="color:red">*</span>
+        <input type="password" id="pwd" name="pwd" placeholder="Enter password">
+        <label >Contact:</label>
+        <input type="text" id="phno" name="phno" placeholder="Enter phone number" required>
+
+        
+        <label >Email:</label>
+		<span style="color:red">*</span>
+        <input type="text" id="email" name="email" placeholder="Enter mail id">
+        <label >Gender:</label>
+		<span style="color:red">*</span><br>
+        <input type="radio" name="gender" value="male" checked> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>
+
+</html>
