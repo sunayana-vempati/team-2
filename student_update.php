@@ -1,96 +1,10 @@
-<?php
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password,"cfg1");
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-$emailErr = $genderErr = $languageErr = $qualificationErr = "";
-$email = $gender = $language = $qualification = "";
-
-
-if (isset($_POST["Submit"])) {
-	
-	
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-		  if (empty($_POST["email"])) {
-			$emailErr = "email is required";
-		  } else {
-			$email = test_input($_POST["email"]);
-			// check if name only contains letters and whitespace
-			if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
-			  $emailErr = "Invalid email format"; 
-			}
-		  }
-  
-		  if (empty($_POST["gender"])) {
-			$genderErr = "gender is required";
-		  } else {
-			$gender= test_input($_POST["gender"]);
-			// check if name only contains letters and whitespace
-			
-		  }
-  
-  
-		  if (empty($_POST["language"])) {
-			$languageErr = "language is required";
-		  } else {
-			$language = test_input($_POST["language"]);
-			// check if name only contains letters and whitespace
-			
-		  }
-  
-		  
-
-		  if (empty($_POST["qualification"])) {
-			$qualificationErr = "Gender is required";
-		  } else {
-			$qualification = test_input($_POST["qualification"]);
-		  }
-  
-			
-  
-			$sql = "INSERT INTO scribeup('email','gender','language','qualification')
-			VALUES ('$email', '$gender','$language','$qualification')";
-			if (mysqli_query($conn,$sql)) {
-				echo "New record created successfully";
-			} else {
-				echo "Error: " ;
-			}
-		}
-	
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-
-
-
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Update your profile</title>
 <style>
 input[type=text], select {
-    width: 30%;
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -109,7 +23,7 @@ input[type=password], select {
 }
 
 input[type=submit] {
-    width:30%
+    width: 100%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -139,23 +53,9 @@ body  {
 <h2 align="center">Update your profile</h2>
 <form align="center" method="post">
 </br>
-<<<<<<< HEAD:scribe_update.html
- <label >Email:</label>
-		<span style="color:red">*</span>
-        <input type="text" id="email" name="email" placeholder="Enter mail id"><br>
-        <label >Gender:</label>
-		<span style="color:red">*</span><br>
-        <input type="radio" name="gender" value="male" checked> Male<br>
-        <input type="radio" name="gender" value="female"> Female<br>
-        <input type="radio" name="gender" value="other"> Other<br>
-
-Language: <input type="checkbox" name="English" value="english"> English
-					<input type="checkbox" name="Telugu" value="telugu"> Telugu</br></br>
-=======
 Languages preferred: <input type="checkbox" name="check" value="english"> English
 					<input type="checkbox" name="check" value="telugu"> Telugu</br></br>
 					
->>>>>>> 6a44a63854cb18ed0e56f5b4eca0d3ae8d2d7b93:student_update.php
 Qualification: 	<input list="qual" name="qual">
 <datalist id="qual">
   <option value="SSC">
@@ -167,12 +67,12 @@ Qualification: 	<input list="qual" name="qual">
 Email id: <input type="text" name="emailid">
 
 Exam Center: <input type="text" name="exam" >
-<input type="submit" align="center" name="Update" value="Update" onclick="test.java"></br>
+<input type="submit" align="center" name="Update" value="Update" ></br>
+
+
+<input type="submit" align="center" name="req" value="Request Scribe" ></br>
 
 </form>
-
-<<<<<<< HEAD:scribe_update.html
-=======
 <?php
 
 
@@ -201,15 +101,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // check if name only contains letters and whitespace
     
   }
-}
+
 	$sql = "INSERT INTO student_update (lang, qual,exam,email) VALUES ('$lang', '$quali','$exams','$email')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
 } else {
     echo "Error: " ;
 }
+}
+
+
+
+
+static $x=0;
+static $y=0;
+static $z=0;
+
+
+function value($ans)
+{
+$cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduation");
+	$length=sizeof($cars);
+	for($z=0;$z<$length;$z++)
+	{
+		if ($ans==$cars[$z])
+		
+		return $z;
+	}
+}
+if (isset($_POST["req"])) {
+	
+	$quali1 =$_POST["qual"];
+	
+	$cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduation");
+	$length=sizeof($cars);
+	for($x=0;$x<$length;$x++)
+	{
+		if ($quali1==$cars[$x])
+		$y=$x;
+	}
+
+
+$sql = "SELECT email, qual FROM scribeup2";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+         $ans= $row["qual"];
+		 $mail=$row["email"];
+		$st= value($ans);
+		if($y>$st)
+		{
+			$sq="select phoneno from scribe where email= '$mail' ";
+			$result = mysqli_query($conn, $sq);
+			if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row1 = mysqli_fetch_assoc($result)) {
+        echo  $row1["phoneno"];
+    }
+		}			
+		 
+    }
+
+}
+}
+}
 ?>
->>>>>>> 6a44a63854cb18ed0e56f5b4eca0d3ae8d2d7b93:student_update.php
+
+
 </body>
 </html>
 
