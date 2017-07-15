@@ -1,16 +1,18 @@
 <?php
 require "db.php";
 
-if(isset($_POST['uname'])&&isset($_POST['pwd'])&&isset($_POST['email'])&&isset($_POST['phno'])&&isset($_POST['gender']))
+if(isset($_POST['type'])&&isset($_POST['uname'])&&isset($_POST['email'])&&isset($_POST['phno'])&&isset($_POST['gender'])&&isset($_POST['pwd']))
 	{
+		
+		if(!empty($_POST['type'])&&!empty($_POST['uname'])&&!empty($_POST['pwd'])&&!empty($_POST['email'])&&!empty($_POST['phno'])&&!empty($_POST['gender']))
+		{
+			
+		$inter=$_POST['type'];
 		$name=$_POST['uname'];
 		$password=$_POST['pwd'];
 		$email=$_POST['email'];
 		$phone=$_POST['phno'];
 		$gender=$_POST['gender'];
-		
-		if(!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phone'])&&!empty($_POST['gender']))
-		{
 				$query="select email from stureg where email='$email'";
 						$query_run=mysqli_query($sql2,$query);
 						if(mysqli_num_rows($query_run)==1)
@@ -24,8 +26,9 @@ if(isset($_POST['uname'])&&isset($_POST['pwd'])&&isset($_POST['email'])&&isset($
 						}
 						else
 						{
-							$query1="insert into stureg values('".mysqli_real_escape_string($sql2,$username)."','".mysqli_real_escape_string($sql2,$password)."','".mysqli_real_escape_string($sql2,$email)."','".mysqli_real_escape_string($sql2,$phone)."','".mysqli_real_escape_string($sql2,$gender)."')";
+							$query1="insert into stureg values('','".mysqli_real_escape_string($sql2,$username)."','".mysqli_real_escape_string($sql2,$email)."','".mysqli_real_escape_string($sql2,$password)."','".mysqli_real_escape_string($sql2,$phone)."','".mysqli_real_escape_string($sql2,$gender)."')";
 							mysqli_query($sql2,$query1);
+							
 							if(!$query1)
 							{
 								?>
@@ -47,18 +50,16 @@ if(isset($_POST['uname'])&&isset($_POST['pwd'])&&isset($_POST['email'])&&isset($
 							
 						}
 			}
-		}
 		else{
 			echo "enter all fields";
 		}
-			
 	}
-?>
+		?>
 
 
 
 
-?>
+
 
 
 
@@ -112,10 +113,10 @@ div {
 <h2 style="margin-left:250px;color:green;">Sign Up</h2>
 
 <div style="width:50%;margin-left:250px">
-    <form action="/action_page.php">
+    <form action="scribe.php">
 	<label>Type:</label>
 		<span style="color:red">*</span>
-        <select id="type" name="type">
+        <select id="type1" name="type">
             <option value="admin">Admin</option>
             <option value="student">Student</option>
             <option value="scribe">Scribe</option>
