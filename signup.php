@@ -83,7 +83,7 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password,"cfg2");
+$conn = mysqli_connect($servername, $username, $password,"cfg1");
 
 // Check connection
 if (!$conn) {
