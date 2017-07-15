@@ -49,8 +49,7 @@ div {
 
 <div style="width:50%;margin-left:250px" >
     <form action="" method="post">
-	<span style="color:red">*</span>
-        <input type="radio" name="user" value="scribe" checked> scribe<br>
+	
         
       
 	<label >Email:</label>
@@ -107,7 +106,7 @@ if (isset($_POST["Submit"])) {
     // check if name only contains letters and whitespace
     
   }
-$sql = "INSERT INTO login ( email,password)
+$sql = "INSERT INTO stulogin ( email,password)
 VALUES ( '$email1','$password1')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
