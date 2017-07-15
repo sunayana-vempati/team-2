@@ -116,7 +116,7 @@ if (mysqli_query($conn, $sql)) {
 static $x=0;
 static $y=0;
 static $z=0;
-
+ph=0;
 
 function value($ans)
 {
@@ -158,7 +158,44 @@ if ($result->num_rows > 0) {
 			if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row1 = mysqli_fetch_assoc($result)) {
-        echo  $row1["phoneno"];
+        ph= $row1["phoneno"];
+		require_once "C:\\vendor\autoload.php";
+    use Twilio\Rest\Client;
+    
+    // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
+    $AccountSid = "AC4d6acd367bc084b1d17915a984072840";
+    $AuthToken = "c3efe901000a8153d5fbfae2e51ca7ef";
+
+    // Step 3: instantiate a new Twilio Rest Client
+    $client = new Client($AccountSid, $AuthToken);
+
+    // Step 4: make an array of people we know, to send them a message. 
+    // Feel free to change/add your own phone number and name here.
+    $people = array(
+        ph,
+         );
+
+    // Step 5: Loop over all our friends. $number is a phone number above, and 
+    // $name is the name next to it
+    foreach ($people as $number => $name) {
+
+        $sms = $client->account->messages->create(
+
+            // the number we are sending to - Any phone number
+            $number,
+
+            array(
+                // Step 6: Change the 'From' number below to be a valid Twilio number 
+                // that you've purchased
+                'from' => "+15108519466", 
+                
+                // the sms body
+                'body' => "Hey $name,+15108519466 has requested you to be the scribe for the forthcoming exam."
+            )
+        );
+
+        // Display a confirmation message on the screen
+        echo "Sent message to $name";
     }
 		}			
 		 
