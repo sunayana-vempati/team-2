@@ -51,10 +51,11 @@ body  {
 </head>
 <body >
 <h2 align="center">Update your profile</h2>
-<form align="center" method="">
+<form align="center" method="post">
 </br>
-Languages preferred: <input type="checkbox" name="English" value="english"> English
-					<input type="checkbox" name="Telugu" value="telugu"> Telugu</br></br>
+Languages preferred: <input type="checkbox" name="check" value="english"> English
+					<input type="checkbox" name="check" value="telugu"> Telugu</br></br>
+					
 Qualification: 	<input list="qual" name="qual">
 <datalist id="qual">
   <option value="SSC">
@@ -62,9 +63,47 @@ Qualification: 	<input list="qual" name="qual">
   <option value="Intermediate 2nd year">
   <option value="Graduation">
 </datalist> </br></br>
+
+Exam Center: <input type="text" name="exam" >
 <input type="submit" align="center" name="Update" value="Update" onclick="test.java"></br>
 
 </form>
+
+<?php
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,"cfg2");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+$lang =$quali=$exams="";
+if (isset($_POST["Update"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+  
+    $lang = $_POST["check"];
+	$quali =$_POST["qual"];
+	$exams = $_POST["exam"];
+    // check if name only contains letters and whitespace
+    
+  }
+}
+	$sql = "INSERT INTO student_update (lang, qual,exam) VALUES ('$lang', '$quali','$exams')";
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " ;
+}
+?>
 </body>
 </html>
 
