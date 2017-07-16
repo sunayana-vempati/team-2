@@ -101,7 +101,7 @@ div {
     background-color: #f2f2f2;
     padding: 20px;">
    <form action="" method="post">
-	<label style="color:darkslategrey">Type:</label>
+	<label style="color:darkslategrey;align:left;">Type:</label>
 		<span style="color:red">*</span>
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="user" value="student" style="color:black" checked><b style="color:black"> Student</b>
         &nbsp;&nbsp;<input type="radio" name="user" value="scribe" style="color:black"><b style="color:black"> Volunteer</b><br><br>
@@ -129,8 +129,9 @@ div {
         <input type="submit" name="Submit" value="Submit" style="color:black;text-align:center;">
     </form>
 </div>
-
+<input type="button" value="Back" style="color:black" onclick="window.history.back()" />
 </div>
+
 
 
 
