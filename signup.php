@@ -219,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = "Name is required";
   } else {
     $phno1 = test_input($_POST["phno"]);
-    // check if name only contains letters and whitespace
+    // check if name only contains letters and
     
   }
   

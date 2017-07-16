@@ -173,7 +173,7 @@ if (isset($_POST["Submit"])) {
     $nameErr = "Password is required";
   } else {
     $password1 = test_input($_POST["pwd"]);
-    // check if name only contains letters and whitespace
+    // check if name only contains letters 
     
   }
 $query="select email,password from stureg where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";

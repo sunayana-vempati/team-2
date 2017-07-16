@@ -104,7 +104,7 @@ if (isset($_POST["Submit"])) {
     $nameErr = "Password is required";
   } else {
     $password1 = test_input($_POST["password"]);
-    // check if name only contains letters and whitespace
+    // check if name only contains letters and 
     
   }
 $query=mysqli_query($sql2,"select email,password from scribe where email='".mysqli_real_escape_string($sql2,$email1)."' and password='".mysqli_real_escape_string($sql2,$password1)."'");

@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$quali =$_POST["qual"];
 	$exams = $_POST["exam"];
 	$email=$_POST["emailid"];
-    // check if name only contains letters and whitespace
+    // check if name only contains letters
     
   }
 
