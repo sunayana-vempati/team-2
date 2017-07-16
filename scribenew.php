@@ -69,6 +69,8 @@ Address : <input type="text" name="address" >
 </form>
 
 <?php
+
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -99,6 +101,8 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error: " ;
 }
+
+echo "Msg is " . $_SESSION["msg"] . ".<br>";
 ?>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <title>Update your profile</title>
 <style>
 input[type=text], select {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -23,7 +23,7 @@ input[type=password], select {
 }
 
 input[type=submit] {
-    width: 100%;
+    width: 20%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -56,7 +56,7 @@ body  {
 Languages preferred: <input type="checkbox" name="check" value="english"> English
 					<input type="checkbox" name="check" value="telugu"> Telugu</br></br>
 					
-Qualification: 	<input list="qual" name="qual">
+Select the Exam: 	<input list="qual" name="qual">
 <datalist id="qual">
   <option value="SSC">
   <option value="Intermediate 1st year">
@@ -64,9 +64,16 @@ Qualification: 	<input list="qual" name="qual">
   <option value="Graduation">
 </datalist> </br></br>
 
-Email id: <input type="text" name="emailid">
+Qualifications: <input list="qual1" name="qual1">
+<datalist id="qual1">
+  <option value="SSC">
+  <option value="Intermediate 1st year">
+  <option value="Intermediate 2nd year">
+  <option value="Graduation">
+</datalist> </br></br>
+Email id: <input type="text" name="emailid"><br/>
 
-Exam Center: <input type="text" name="exam" >
+Exam Center: <input type="text" name="exam" ><br/>
 <input type="submit" align="center" name="Update" value="Update" ></br>
 
 
@@ -74,6 +81,7 @@ Exam Center: <input type="text" name="exam" >
 
 </form>
 <?php
+session_start();
 
 
 $servername = "localhost";
@@ -131,6 +139,7 @@ $cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduatio
 }
 if (isset($_POST["req"])) {
 	
+	$_SESSION["msg"] = "u have received request from this ";
 	$quali1 =$_POST["qual"];
 	
 	$cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduation");

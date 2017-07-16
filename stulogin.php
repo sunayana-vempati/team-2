@@ -68,7 +68,7 @@ div {
 	
 	<?php
 
-
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -124,7 +124,7 @@ $query="select email,password from stureg where email='".mysqli_real_escape_stri
 							}
 	}
 	}
-
+$_SESSION["msg"] = "u have received request from this ";
 	
 function test_input($data) {
   $data = trim($data);
