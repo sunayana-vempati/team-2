@@ -2,182 +2,7 @@
 <html>
 <head>
 <title>Update your profile</title>
-
-  
-  <h2 style="font-size:75px;color:darkblue;"><i> I&EYE </i></h2>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  body {
-      font: 20px TimesNewRoman, TimesNewRoman;
-      line-height: 1.8;
-      color: #f5f6f7;
-  }
-  p {font-size: 16px;}
-  .margin {margin-bottom: 45px;}
-  .bg-1 { 
-      background-color: #1abc9c; /* Green */
-      color: #ffffff;
-  }
-  .bg-2 { 
-      background-color: #474e5d; /* Dark Blue */
-      color: #ffffff;
-  }
-  .bg-3 { 
-      background-color: #ffffff; /* White */
-      color: #555555;
-  }
-  .bg-4 { 
-      background-color: #2f2f2f; /* Black Gray */
-      color: #fff;
-  }
-  .container-fluid {
-      padding-top: 70px;
-      padding-bottom: 70px;
-  }
-  .navbar {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0;
-      font-size: 12px;
-      letter-spacing: 5px;
-  }
-  .navbar-nav  li a:hover {
-      color: #1abc9c !important;
-	
-  }
-  
-
-
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0
-	;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-input[type=password], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-input[type=password], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-
-
-input[type=text], select {
-    width: 100%;0.0
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-input[type=password], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
+<style>
 input[type=text], select {
     width: 50%;
     padding: 12px 20px;
@@ -217,68 +42,15 @@ div {
     background-color: #f2f2f2;
     padding: 20px;
 }
-
+body  {
+    background-image: url('ieye.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 </style>
 </head>
 <body >
-<div class="container-fluid bg-2 text-center">
-  <h2 class="margin" padding-left="200px" >Update Profile</h2>
- <div style="width:50%;margin-left:250px;border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;">
-   <form align="center" method="post">
-   <label style="color:darkslategrey;align:left;">Languages Preferred:</label>
-		<span style="color:red">*</span>
-   &nbsp;&nbsp;&nbsp; <input type="checkbox" name="check" value="english" checked><b style="color:black" > English</b>
-				&nbsp;&nbsp;	<input type="checkbox" name="check" value="telugu" style="color:black"><b style="color:black"> Telugu</b></br></br>
-					
-
-		<label style="color:darkslategrey;align:left;">Select exam:</label>
-		<span style="color:red">*</span>			
-						<input list="qual" name="qual">
-<datalist id="qual">
-  <option value="SSC">
-  <option value="Intermediate 1st year">
-  <option value="Intermediate 2nd year">
-  <option value="Graduation">
-</datalist> </br></br>
-<label style="color:darkslategrey;align:left;">Qualifications:</label>
-		<span style="color:red">*</span> <input list="qual1" name="qual1">
-<datalist id="qual1">
-  <option value="SSC">
-  <option value="Intermediate 1st year">
-  <option value="Intermediate 2nd year">
-  <option value="Graduation">
-</datalist> </br></br>
-<label style="color:darkslategrey;align:left;">Email:</label>
-		<span style="color:red">*</span>
- &nbsp;&nbsp;&nbsp;<input type="text" name="emailid"><br/>
-<label style="color:darkslategrey;align:left;">Exam Center:</label>
-		<span style="color:red">*</span>
-<input type="text" name="exam" ><br/>
-<input type="submit" value="Update" name="Update">
-
-
-
-
-
-</form>
-	<!--<label style="color:darkslategrey;align:left;">Email:</label>
-		<span style="color:red">*</span>
-		<input type="text" id="email" name="email" placeholder="Enter mail id" required><br>
-		<label style="color:darkslategrey;align:left;">Password:</label>
-		<span style="color:red">*</span>
-		<input type="password" id="pwd" name="pwd" placeholder="Enter password">
-		
-		<input type="submit" value="Submit" name="Submit">
-    </form>-->
-	</div>
-	</div>
-
-
-
-
-<!--<h2 align="center">Update your profile</h2>
+<h2 align="center">Update your profile</h2>
 <form align="center" method="post">
 </br>
 Languages preferred: <input type="checkbox" name="check" value="english"> English
@@ -307,7 +79,7 @@ Exam Center: <input type="text" name="exam" ><br/>
 
 
 
-</form>-->
+</form>
 <?php
 session_start();
 
