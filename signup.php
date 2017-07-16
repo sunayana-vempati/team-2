@@ -44,7 +44,7 @@ div {
 </style>
 <body>
 
-<h2 style="margin-left:250px;color:green;">Welcome</h2>
+<h2 style="margin-left:250px;color:green;">Sign Up !!!</h2>
 
 <div style="width:50%;margin-left:250px" >
     <form action="" method="post">
