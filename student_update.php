@@ -77,7 +77,7 @@ Exam Center: <input type="text" name="exam" ><br/>
 <input type="submit" align="center" name="Update" value="Update" ></br>
 
 
-<input type="submit" align="center" name="req" value="Request Scribe" ></br>
+
 
 </form>
 <?php
@@ -106,16 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$quali =$_POST["qual"];
 	$exams = $_POST["exam"];
 	$email=$_POST["emailid"];
-    // check if name only contains letters
+    // check if name only contains letters and whitespace
     
   }
-
-	$sql = "INSERT INTO student_update (lang, qual,exam,email) VALUES ('$lang', '$quali','$exams','$email')";
+$status="one";
+	$sql = "INSERT INTO student_update (lang, qual,exam,email,status) VALUES ('$lang', '$quali','$exams','$email','$status')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
 } else {
     echo "Error: " ;
-}
 }
 
 
@@ -125,7 +124,7 @@ static $x=0;
 static $y=0;
 static $z=0;
 $ph=0;
-
+$status=0;
 function value($ans)
 {
 $cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduation");
@@ -137,7 +136,9 @@ $cars = array("SSC", "Intermediate 1st year", "Intermediate 2nd year","Graduatio
 		return $z;
 	}
 }
-if (isset($_POST["req"])) {
+
+	
+	
 	
 	$_SESSION["msg"] = "u have received request from this ";
 	$quali1 =$_POST["qual"];
@@ -214,6 +215,7 @@ if ($result->num_rows > 0) {
 }
 }
 }
+
 ?>
 
 

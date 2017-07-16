@@ -20,7 +20,6 @@ input[type=password], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
 input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
@@ -31,11 +30,9 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
-
 input[type=submit]:hover {
     background-color: #45a049;
 }
-
 div {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -68,23 +65,15 @@ div {
 	
 	
 	<?php
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password,"cfg2");
-
-// Check connection
+$conn = mysqli_connect($servername, $username, $password,"cfg1");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connected successfully";
-
 $email1=$password1="";
-
 if (isset($_POST["Submit"])) {
 	
 	
@@ -94,7 +83,6 @@ if (isset($_POST["Submit"])) {
     $emailErr = "Email is required";
   } else {
     $email1= test_input($_POST["email"]);
-    // check if e-mail address is well-formed
     if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format"; 
     }
@@ -103,32 +91,29 @@ if (isset($_POST["Submit"])) {
 	if (empty($_POST["password"])) {
     $nameErr = "Password is required";
   } else {
-    $password1 = test_input($_POST["password"]);
-    // check if name only contains letters and whitespace
+    $password1 = test_input($_POST["password"]); 
     
   }
-  
-  
-  
-
-  
-$query=mysqli_query($conn,"select email,password from scribe where email='.$email1.' and password='.$password1.'");
-		$que=mysqli_num_rows($query);
-          if(!$que)
+$query=mysqli_query($sql2,"select email,password from scribe where email='".mysqli_real_escape_string($sql2,$email1)."' and password='".mysqli_real_escape_string($sql2,$password1)."'");
+		
+          if(mysqli_num_rows($query)==1)
 			{	
-			echo "welcome";
-			header("Location:scribenew.php");
-			}
+			?>
+								<script>
+								alert('<?php echo "welcome";?>');
+								window.location="welcome.php";
+								</script>
+								<?php
+							}
 							else
 							{
-								//$_SESSION['varname']=$user;
+
 								
 								echo "error";
 								
 							}
 	}
 	}
-
 	
 function test_input($data) {
   $data = trim($data);
@@ -138,6 +123,3 @@ function test_input($data) {
 }	
 ?>
 </html>
-	
-	
-	
