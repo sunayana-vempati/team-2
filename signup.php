@@ -1,6 +1,55 @@
 <html><!DOCTYPE html>
 <html>
-<style>
+<head>
+  
+  <title>Sign Up</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+  }
+  .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+  
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -42,15 +91,58 @@ div {
     padding: 20px;
 }
 </style>
+</head>
 <body>
 
-<h2 style="margin-left:250px;color:green;">Welcome</h2>
+<!--<h2 style="margin-left:250px;color:green;">Sign Up</h2>-->
+<div class="container-fluid bg-2 text-center">
+  <h2 class="margin" padding-left="200px" >Sign Up</h2>
+ <div style="width:50%;margin-left:250px;border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;">
+   <form action="" method="post">
+	<label style="color:darkslategrey">Type:</label>
+		<span style="color:red">*</span>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="user" value="student" style="color:black" checked><b style="color:black"> Student</b>
+        &nbsp;&nbsp;<input type="radio" name="user" value="scribe" style="color:black"><b style="color:black"> Volunteer</b><br><br>
+       
+        <label style="color:darkslategrey;"  >Name:</label>
+        <span style="color:red">*</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="uname" name="uname" placeholder="Enter name" style="color:grey" required><br><br>
+        <label style="color:darkslategrey">Password:</label>
+		<span style="color:red">*</span>
+        <input type="password" id="pwd" name="pwd" style="text-align:left;color:grey" placeholder="Enter password"  required><br><br>
+        <label style="color:darkslategrey">Contact:</label>
+		<span style="color:red">*</span>
+         &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="phno" name="phno" placeholder="Enter phone number" style="color:grey" required><br>
+
+        <br>
+        <label style="color:darkslategrey">Email:</label>
+		<span style="color:red">*</span>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="email" name="email" placeholder="Enter mail id" style="color:grey" required><br><br>
+        <label style="color:darkslategrey">Gender:</label>
+		<span style="color:red">*</span>
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="male" style="color:black" checked><b style="color:black"> Male</b>
+       &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="female" style="color:black"><b style="color:black"> Female</b>
+       &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="other" style="color:black"><b style="color:black"> Other</b><br><br>
+
+        <input type="submit" name="Submit" value="Submit" style="color:black;text-align:center;">
+    </form>
+</div>
+
+</div>
+
+
+
+
+
+
 
 <!--<div style="width:50%;margin-left:250px" >
     <form action="" method="post">
 	<label>Type:</label>
 		<span style="color:red">*</span>
-        <input type="radio" name="user" value="scribe" checked> scribe<br>
+        <input type="radio" name="user" value="scribe" checked> scribe
         <input type="radio" name="user" value="student"> student<br>
       
         <label >Name:</label>
