@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class FirstServlet extends HttpServlet {
+public class test extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -15,7 +15,7 @@ public class FirstServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String n=request.getParameter("username");
 		String p=request.getParameter("userpass");
-		if(n=="" && p==""){
+		if(n=="a" && p=="b"){
 		out.print("successful");
 		}
 		else{

@@ -1,93 +1,142 @@
-<?php
-$error = "";
-$successMessage = "";  
-    
-if($_POST)
-{
-    
-    if(!$_POST["email"])
-    {
-        $error .= "an email address is required.<br>";
-    }
-   if( isset( $_REQUEST['password'] ) ) {
-  $user = $_REQUEST['password'];
-}
-    if ($_POST["email"] && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)==false) 
-    {
-        $error .= "an email is not valid.<br>";
-    }
-    
-    if($error != "")
-    {
-        $error = '<div class="alert alert-danger" role="alert"><p><strong>there were errors in your form: </strong></p>' . $error .'</div>';   
-        
-        
-    }
-    
-    
-    
-}
-?>
-
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content "ie=edge">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <h1>I and EYE</h1>
-        <div id="error"><? echo $error.$successMessage; ?></div>
-        <form method="post">
-  <fieldset class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter your email address">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="password">password</label>
-    <input type="password" class="form-control" id="password" name="password">
-  </fieldset>
-  
-  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  
-    <script type="text/javascript">
-       $("form").submit(function (e){
-            e.preventDefault(); 
-            var error="";
-           
-           if($("#email").val()=="" ){
-                    error += "the email field is required<br>";
-                }
-           
-           if($("#password").val()=="" ){
-                    error += "the subject field is required<br>";
-                }
-           
-           if(error!="")
-               {
-                    $("#error").html('<div class="alert alert-danger" role="alert"><p><strong>there were errors in your form: </strong></p>' + error +'</div>');                   
-               }else{
-                   
-                    $("form").unbind("submit").submit();
-               }
-                           
-    
-                        
-    }}
+
+
+<style>
+input[type=text], select {
+    width: 100%;0.0
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+
+<body>
+
+<h2 style="margin-left:250px;color:green;">Login</h2>
+
+<div style="width:50%;margin-left:250px" >
+    <form action="" method="post">
+	<span style="color:red">*</span>
+        <input type="radio" name="user" value="scribe" checked> scribe<br>
+        
       
-      </script>
-    </body>
+	<label >Email:</label>
+		<span style="color:red">*</span>
+        <input type="text" id="email" name="email" placeholder="Enter mail id" style="width:100%">
+		<br/>
+		<br/>
+		 <label >Password:</label>
+		<span style="color:red">*</span>
+        <input type="password" id="pwd" name="pwd" placeholder="Enter password">
+		
+		<input type="submit" value="Submit" name="Submit">
+    </form>
+	</div>
+	
+	
+	<?php
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,"cfg1");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+$email1=$password1="";
+
+if (isset($_POST["Submit"])) {
+	
+	
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		
+		 if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email1= test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format"; 
+    }
+  }
+    
+	if (empty($_POST["password"])) {
+    $nameErr = "Password is required";
+  } else {
+    $password1 = test_input($_POST["password"]);
+    // check if name only contains letters and 
+    
+  }
+$query=mysqli_query($sql2,"select email,password from scribe where email='".mysqli_real_escape_string($sql2,$email1)."' and password='".mysqli_real_escape_string($sql2,$password1)."'");
+		
+          if(mysqli_num_rows($query)==1)
+			{	
+			?>
+								<script>
+								alert('<?php echo "welcome";?>');
+								window.location="welcome.php";
+								</script>
+								<?php
+							}
+							else
+							{
+								//$_SESSION['varname']=$user;
+								
+								echo "error";
+								
+							}
+	}
+	}
+
+	
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}	
+?>
 </html>
+	
+	
+	
