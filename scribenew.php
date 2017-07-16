@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$email=$_POST["emailid"];
 	$address= $_POST["address"];
 	
-    // check if name only contains letters and whitespace
+    // check if name only contains letters 
     
   }
 }
