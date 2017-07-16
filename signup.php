@@ -46,7 +46,7 @@ div {
 
 <h2 style="margin-left:250px;color:green;">Welcome</h2>
 
-<div style="width:50%;margin-left:250px" >
+<!--<div style="width:50%;margin-left:250px" >
     <form action="" method="post">
 	<label>Type:</label>
 		<span style="color:red">*</span>
@@ -75,7 +75,7 @@ div {
 
         <input type="submit" value="Submit" name="Submit">
     </form>
-	</div>
+	</div>-->
 <?php
 
 
@@ -98,13 +98,13 @@ $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name1 = $password1=$email1 = $phno1=$gender1 =  "";
 
 
-if (isset($_POST["Submit"])) {
+if (isset($_POST["submit"])) {
 	
-if($_POST["user"]=="scribe")
+if($_POST["student"]=="scribe")
 	{
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  if (empty($_POST["name"])) {
+  if (empty($_POST["uname"])) {
     $nameErr = "Name is required";
   } else {
     $name1 = test_input($_POST["uname"]);
