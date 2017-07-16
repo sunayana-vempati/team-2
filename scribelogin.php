@@ -107,11 +107,17 @@ if (isset($_POST["Submit"])) {
     // check if name only contains letters and whitespace
     
   }
-$query=mysqli_query($conn,"select email,password from scribe where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'");
-		
-          if(mysqli_num_rows($query)>=1)
+  
+  
+  
+
+  
+$query=mysqli_query($conn,"select email,password from scribe where email='.$email1.' and password='.$password1.'");
+		$que=mysqli_num_rows($query);
+          if(!$que)
 			{	
 			echo "welcome";
+			header("Location:scribenew.php");
 			}
 							else
 							{

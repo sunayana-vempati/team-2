@@ -110,9 +110,10 @@ if (isset($_POST["Submit"])) {
   }
 $query="select email,password from stureg where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";
 		$query_run=mysqli_query($conn,$query);
-          if(mysqli_num_rows($query_run)>=1)
+          if(mysqli_num_rows($query_run)>0)
 			{	
 			echo "successful login";
+			header("Location:student_update.php");
 							}
 							else
 							{

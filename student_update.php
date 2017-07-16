@@ -116,7 +116,7 @@ if (mysqli_query($conn, $sql)) {
 static $x=0;
 static $y=0;
 static $z=0;
-ph=0;
+$ph=0;
 
 function value($ans)
 {
@@ -158,9 +158,9 @@ if ($result->num_rows > 0) {
 			if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row1 = mysqli_fetch_assoc($result)) {
-        ph= $row1["phoneno"];
+        $ph= $row1["phoneno"];
 		require_once "C:\\vendor\autoload.php";
-    use Twilio\Rest\Client;
+    //use Twilio\Rest\Client;
     
     // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
     $AccountSid = "AC4d6acd367bc084b1d17915a984072840";
@@ -201,6 +201,7 @@ if ($result->num_rows > 0) {
 		 
     }
 
+}
 }
 }
 }
