@@ -74,7 +74,7 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password,"cfg1");
+$conn = mysqli_connect($servername, $username, $password,"cfg2");
 
 // Check connection
 if (!$conn) {
@@ -83,6 +83,8 @@ if (!$conn) {
 echo "Connected successfully";
 
 $email1=$password1="";
+$emailErr=$nameErr="";
+
 
 if (isset($_POST["Submit"])) {
 	
@@ -99,23 +101,18 @@ if (isset($_POST["Submit"])) {
     }
   }
     
-	if (empty($_POST["password"])) {
+	if (empty($_POST["pwd"])) {
     $nameErr = "Password is required";
   } else {
-    $password1 = test_input($_POST["password"]);
+    $password1 = test_input($_POST["pwd"]);
     // check if name only contains letters and whitespace
     
   }
-$query="select email,password from stulogin where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";
+$query="select email,password from stureg where email='".mysqli_real_escape_string($conn,$email1)."' and password='".mysqli_real_escape_string($conn,$password1)."'";
 		$query_run=mysqli_query($conn,$query);
           if(mysqli_num_rows($query_run)>=1)
 			{	
-			?>
-								<script>
-								alert('<?php echo "welcome";?>');
-								window.location="welcome.php";
-								</script>
-								<?php
+			echo "successful login";
 							}
 							else
 							{

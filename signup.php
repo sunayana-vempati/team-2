@@ -156,7 +156,7 @@ $sql = "INSERT INTO scribe(name, email,password,gender,phoneno)
 VALUES ('$name1', '$email1','$password1', '$gender1','$phno1')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
-	header('Location:stulogin.php');
+	header('Location:scribelogin.php');
 	
 } else {
     echo "Error: " ;
@@ -219,7 +219,7 @@ $sql = "INSERT INTO stureg (name, email,password,gender,phoneno)
 VALUES ('$name1', '$email1','$password1', '$gender1','$phno1')";
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
-	header('Location:scribelogin.php');
+	header('Location:stulogin.php');
 } else {
     echo "Error: " ;
 }
