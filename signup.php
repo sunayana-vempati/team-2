@@ -59,7 +59,7 @@ div {
 
         <label >Password:</label>
 		<span style="color:red">*</span>
-        <input type="password" id="pwd" name="pwd" placeholder="Enter password">
+        <input type="password" id="pwd" name="pwd" placeholder="Enter password ">
         <label >Contact:</label>
         <input type="text" id="phno" name="phno" placeholder="Enter phone number" required>
 
